@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import { getPartners, getRecentSearches, addRecentSearch, removeRecentSearch } from '../utils/storage'
+import { BarChart3, BrainCircuit, Workflow, Users, UserCog, Cloud } from 'lucide-react'
 
 const SECTORS = [
-  { name: 'ERP & Finance',            icon: '💼' },
-  { name: 'Data & AI',                icon: '🧠' },
-  { name: 'Process Automation & RPA', icon: '🤖' },
-  { name: 'CRM & Sales',              icon: '🤝' },
-  { name: 'HR & Workforce',           icon: '👥' },
-  { name: 'Cloud & Infrastructure',   icon: '☁️' },
+  { name: 'ERP & Finance',            Icon: BarChart3,    color: 'text-blue-600',   bg: 'bg-blue-50' },
+  { name: 'Data & AI',                Icon: BrainCircuit, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+  { name: 'Process Automation & RPA', Icon: Workflow,      color: 'text-purple-600', bg: 'bg-purple-50' },
+  { name: 'CRM & Sales',              Icon: Users,         color: 'text-pink-600',   bg: 'bg-pink-50' },
+  { name: 'HR & Workforce',           Icon: UserCog,       color: 'text-orange-600', bg: 'bg-orange-50' },
+  { name: 'Cloud & Infrastructure',   Icon: Cloud,         color: 'text-sky-600',    bg: 'bg-sky-50' },
 ]
 
 export default function Home() {
@@ -122,7 +123,9 @@ export default function Home() {
                 onClick={() => navigate(`/results?sector=${encodeURIComponent(s.name)}`)}
                 className="bg-white border border-gray-100 rounded-xl p-4 text-left hover:border-navy hover:shadow-md transition-all shadow-sm group"
               >
-                <div className="text-2xl mb-2">{s.icon}</div>
+                <div className={`w-9 h-9 rounded-lg ${s.bg} flex items-center justify-center mb-3`}>
+                  <s.Icon size={18} className={s.color} strokeWidth={1.75} />
+                </div>
                 <div className="text-sm font-medium text-gray-700 group-hover:text-navy leading-snug">
                   {s.name}
                 </div>
