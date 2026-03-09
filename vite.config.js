@@ -16,8 +16,8 @@ export default defineConfig({
         background_color: '#1B2E5E',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/demo_efeso/',
-        start_url: '/demo_efeso/',
+        scope: '/demo-efeso/',
+        start_url: '/demo-efeso/',
         icons: [
           {
             src: 'icons/icon-192.png',
@@ -52,5 +52,5 @@ export default defineConfig({
       }
     })
   ],
-  base: '/demo_efeso/'
+  base: '/demo-efeso/'
 })
