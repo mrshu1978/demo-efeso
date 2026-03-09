@@ -36,7 +36,7 @@ export default function EditPartner() {
     setTimeout(() => setSaved(false), 2500)
   }
 
-  const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(form.full_name || '')}&background=1B2E5E&color=fff&size=150&bold=true`
+  const fallbackLogo = `https://ui-avatars.com/api/?name=${encodeURIComponent(form.company_name || '')}&background=1B2E5E&color=fff&size=150&bold=true&format=svg`
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -53,30 +53,31 @@ export default function EditPartner() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           {/* Header */}
           <div className="bg-navy px-6 py-5 flex items-center gap-4">
-            <img
-              src={form.avatar || fallbackAvatar}
-              alt={form.full_name}
-              className="w-14 h-14 rounded-full object-cover border-2 border-white/30 flex-shrink-0"
-              onError={e => { e.target.onerror = null; e.target.src = fallbackAvatar }}
-            />
+            <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-1.5 shadow">
+              <img
+                src={form.logo || fallbackLogo}
+                alt={form.company_name}
+                className="w-full h-full object-contain"
+                onError={e => { e.target.onerror = null; e.target.src = fallbackLogo }}
+              />
+            </div>
             <div className="text-white min-w-0">
-              <h1 className="text-lg font-bold truncate">{form.full_name}</h1>
-              <p className="text-sm text-blue-200">{form.email}</p>
+              <h1 className="text-lg font-bold truncate">{form.company_name}</h1>
+              <p className="text-sm text-blue-200/80">{form.headquarters}</p>
             </div>
           </div>
 
           <form onSubmit={handleSave} className="p-6 space-y-5">
 
-            {/* Personal info */}
+            {/* Company info */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Personal info</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Company info</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Full name" value={form.full_name} onChange={v => set('full_name', v)} />
-                <Field label="Email" type="email" value={form.email} onChange={v => set('email', v)} />
-                <Field label="Phone" value={form.phone} onChange={v => set('phone', v)} />
-                <Field label="LinkedIn URL" value={form.linkedin_url} onChange={v => set('linkedin_url', v)} />
+                <Field label="Company name" value={form.company_name} onChange={v => set('company_name', v)} />
+                <Field label="Headquarters" value={form.headquarters} onChange={v => set('headquarters', v)} />
+                <Field label="Website" type="url" value={form.website} onChange={v => set('website', v)} />
                 <div className="sm:col-span-2">
-                  <Field label="Avatar URL" value={form.avatar} onChange={v => set('avatar', v)} />
+                  <Field label="Logo URL" value={form.logo} onChange={v => set('logo', v)} />
                 </div>
               </div>
             </div>
@@ -87,8 +88,8 @@ export default function EditPartner() {
               <textarea
                 value={form.solution_description || ''}
                 onChange={e => set('solution_description', e.target.value)}
-                rows={3}
-                placeholder="Brief description of the technology solution offered..."
+                rows={4}
+                placeholder="Describe the technology solutions and value this partner brings to EFESO client projects..."
                 className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy resize-none"
               />
             </div>
@@ -116,7 +117,7 @@ export default function EditPartner() {
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Settings</p>
               <div className="flex gap-8">
                 <Toggle
-                  label="Active profile"
+                  label="Active"
                   description="Partner is present in the system"
                   value={form.is_active}
                   onChange={v => set('is_active', v)}

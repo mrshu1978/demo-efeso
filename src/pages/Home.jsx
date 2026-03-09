@@ -53,9 +53,9 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-4 py-12">
         {/* Hero */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-navy mb-2">Find the Technology Solution</h1>
+          <h1 className="text-3xl font-bold text-navy mb-2">Find the Right Technology Partner</h1>
           <p className="text-gray-400 text-sm">
-            Describe the function or technical solution you're looking for — find the most relevant EFESO technology partners
+            Search by technology, solution or business function — discover the partners EFESO works with to deliver client projects
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export default function Home() {
             onClick={() => navigate('/results')}
             className="text-sm text-gray-400 hover:text-navy transition-colors"
           >
-            See all {partners.length} partners →
+            See all {partners.length} technology partners →
           </button>
         </div>
 

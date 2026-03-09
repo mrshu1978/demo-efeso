@@ -45,7 +45,7 @@ export default function Results() {
                 : 'All partners'
               }
             </h2>
-            <p className="text-xs text-gray-400">{results.length} partners found</p>
+            <p className="text-xs text-gray-400">{results.length} technology {results.length === 1 ? 'partner' : 'partners'} found</p>
           </div>
         </div>
 

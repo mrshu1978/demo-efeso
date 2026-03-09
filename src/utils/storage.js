@@ -1,7 +1,7 @@
 import seedData from '../data/partners.json'
 
 const KEYS = {
-  PARTNERS: 'efeso_partners_v8',
+  PARTNERS: 'efeso_partners_v9',
   USER: 'efeso_user',
   RECENT: 'efeso_recent',
   RATINGS: 'efeso_ratings'
@@ -9,33 +9,37 @@ const KEYS = {
 
 const SEED_COMMENTS = {
   "1": [
-    { author: "Sarah", stars: 5, text: "Exceptional SAP knowledge. Marco led our S/4HANA migration flawlessly, delivering on time and under budget.", date: "12 Feb 2026" },
-    { author: "James", stars: 4, text: "Very solid ERP expertise. Guided us through a complex finance module rollout with great communication throughout.", date: "28 Jan 2026" }
+    { author: "Marco R.", stars: 5, text: "SAP is our go-to for S/4HANA migrations. The depth of their solution portfolio and partner support during our last manufacturing client rollout was outstanding.", date: "10 Feb 2026" },
+    { author: "Giulia T.", stars: 4, text: "Solid ERP backbone for complex finance transformations. BTP integration capabilities have opened up a lot of extensibility options on recent projects.", date: "27 Jan 2026" }
+  ],
+  "2": [
+    { author: "Luca M.", stars: 5, text: "Microsoft's ecosystem is unmatched for integrated AI+cloud projects. Azure OpenAI and Copilot Studio let us deliver a working GenAI assistant to a client in under 6 weeks.", date: "14 Feb 2026" },
+    { author: "Sara B.", stars: 5, text: "Power Platform is a game-changer for rapid automation. We deployed a fully working approval workflow for a retail client in 3 days.", date: "01 Feb 2026" },
+    { author: "James K.", stars: 4, text: "Microsoft Fabric is evolving fast. Some rough edges still, but the unified lakehouse vision is exactly what our data-heavy clients need.", date: "19 Jan 2026" }
+  ],
+  "3": [
+    { author: "Carlo P.", stars: 5, text: "Salesforce Sales Cloud transformed how our client manages its B2B pipeline. The Einstein AI recommendations alone improved conversion rates significantly.", date: "20 Feb 2026" },
+    { author: "Anna V.", stars: 3, text: "Strong CRM platform but licensing costs can escalate quickly on complex orgs. Need careful scoping upfront to avoid budget overruns.", date: "08 Jan 2026" }
   ],
   "4": [
-    { author: "Anna", stars: 5, text: "Elena's supply chain planning expertise is top notch. The o9 implementation she drove cut our forecast error by 30%.", date: "15 Feb 2026" },
-    { author: "Raj", stars: 4, text: "Great collaboration on the demand planning project. Very knowledgeable about Blue Yonder and Kinaxis.", date: "03 Feb 2026" }
+    { author: "Thomas N.", stars: 5, text: "UiPath is the most mature RPA platform we've used. The Orchestrator gives us full visibility over all automations running across client environments.", date: "11 Feb 2026" },
+    { author: "Isabelle F.", stars: 4, text: "Document Understanding saved weeks of manual data entry for a client in logistics. Impressive accuracy even on low-quality scanned invoices.", date: "29 Jan 2026" }
   ],
   "5": [
-    { author: "Giulia", stars: 5, text: "Carlos redesigned our entire Salesforce setup. The automation he implemented saved our sales team hours every week.", date: "20 Feb 2026" },
-    { author: "Thomas", stars: 3, text: "Good Salesforce skills. Took a bit longer than expected on the integration side but ultimately delivered quality work.", date: "10 Jan 2026" }
+    { author: "Marco R.", stars: 5, text: "Celonis is the best tool we have to show clients what is actually happening in their processes vs what they think is happening. Always a revelation.", date: "18 Feb 2026" },
+    { author: "Giulia T.", stars: 5, text: "The Action Engine is where the real value kicks in — not just diagnosing problems but triggering fixes automatically inside SAP. Clients love it.", date: "04 Feb 2026" }
   ],
   "6": [
-    { author: "Marco", stars: 5, text: "Anna's ability to translate complex data architectures into business value is remarkable. Our Power BI dashboards transformed decision-making.", date: "18 Feb 2026" },
-    { author: "Sarah", stars: 4, text: "Great data strategist. Built our Azure data platform from scratch and trained the team effectively.", date: "05 Feb 2026" },
-    { author: "Carlos", stars: 5, text: "Palantir Foundry implementation was outstanding. Anna understood our operational needs from day one.", date: "22 Jan 2026" }
+    { author: "Elena C.", stars: 5, text: "Blue Yonder is our first choice for supply chain planning in complex manufacturing environments. The AI demand sensing capabilities are well ahead of competitors.", date: "15 Feb 2026" },
+    { author: "Raj S.", stars: 4, text: "Implementation requires deep supply chain expertise on the EFESO side, but once live the client autonomy is excellent. Good partner support team.", date: "02 Feb 2026" }
   ],
-  "7": [
-    { author: "Isabelle", stars: 4, text: "Thomas automated several of our back-office processes with UiPath. Very methodical approach and excellent documentation.", date: "11 Feb 2026" },
-    { author: "Giulia", stars: 5, text: "ServiceNow rollout went smoothly under Thomas's leadership. Processes are now fully digital and the team loves it.", date: "30 Jan 2026" }
-  ],
-  "9": [
-    { author: "Anna", stars: 5, text: "Raj's multi-cloud architecture was exactly what we needed. Azure and AWS workloads perfectly balanced and cost-optimised.", date: "14 Feb 2026" },
-    { author: "Thomas", stars: 4, text: "Solid cloud expertise. The Kubernetes setup Raj designed has been rock-solid since go-live.", date: "02 Feb 2026" }
+  "8": [
+    { author: "Luca M.", stars: 5, text: "Databricks is our platform of choice for industrial IoT and predictive analytics. The MLflow integration makes model lifecycle management straightforward.", date: "22 Feb 2026" },
+    { author: "Sara B.", stars: 4, text: "Unity Catalog has finally solved the data governance headache on multi-team projects. Significant improvement over previous approaches.", date: "09 Feb 2026" }
   ],
   "13": [
-    { author: "Marco", stars: 5, text: "Piero is ahead of the curve on generative AI. His RAG implementation gave our team a truly powerful internal knowledge assistant.", date: "25 Feb 2026" },
-    { author: "Elena", stars: 5, text: "Outstanding AI work. Piero built a Copilot Studio agent that handles 60% of our internal HR queries automatically.", date: "17 Feb 2026" }
+    { author: "Anna V.", stars: 5, text: "o9 replaced three legacy planning tools for one of our FMCG clients. The single-platform S&OP approach cut planning cycle time by 40%.", date: "25 Feb 2026" },
+    { author: "Carlo P.", stars: 5, text: "Exceptional demand sensing and financial reconciliation capabilities. The AI-driven scenario planning is genuinely differentiating for commercial teams.", date: "17 Feb 2026" }
   ]
 }
 
@@ -43,9 +47,9 @@ export function initData() {
   if (!localStorage.getItem(KEYS.PARTNERS)) {
     localStorage.setItem(KEYS.PARTNERS, JSON.stringify(seedData))
   }
-  if (!localStorage.getItem('efeso_comments_seeded_v1')) {
+  if (!localStorage.getItem('efeso_comments_seeded_v2')) {
     localStorage.setItem('efeso_comments', JSON.stringify(SEED_COMMENTS))
-    localStorage.setItem('efeso_comments_seeded_v1', '1')
+    localStorage.setItem('efeso_comments_seeded_v2', '1')
   }
 }
 

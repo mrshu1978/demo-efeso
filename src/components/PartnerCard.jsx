@@ -13,14 +13,14 @@ const SECTOR_COLORS = {
 
 export default function PartnerCard({ partner, isTop = false }) {
   const navigate = useNavigate()
-  const { id, full_name, email, phone, avatar, linkedin_url, sectors, solutions, solution_description, score } = partner
+  const { id, company_name, logo, website, headquarters, sectors, solutions, solution_description, score } = partner
 
   const comments = getComments(id)
   const avgStars = comments.length
     ? Math.round(comments.reduce((sum, c) => sum + c.stars, 0) / comments.length * 10) / 10
     : null
 
-  const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(full_name)}&background=1B2E5E&color=fff&size=150&bold=true`
+  const fallbackLogo = `https://ui-avatars.com/api/?name=${encodeURIComponent(company_name)}&background=1B2E5E&color=fff&size=150&bold=true&format=svg`
 
   return (
     <div className={`bg-white rounded-xl shadow-sm border transition-shadow hover:shadow-md ${
@@ -28,27 +28,26 @@ export default function PartnerCard({ partner, isTop = false }) {
     }`}>
       <div className="p-5 cursor-pointer" onClick={() => navigate(`/partner/${id}`)}>
         <div className="flex items-start gap-4">
-          {/* Avatar */}
-          <img
-            src={avatar}
-            alt={full_name}
-            className="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-100"
-            onError={e => { e.target.onerror = null; e.target.src = fallbackAvatar }}
-          />
+          {/* Logo */}
+          <div className="w-14 h-14 rounded-xl border border-gray-100 bg-white flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+            <img
+              src={logo}
+              alt={company_name}
+              className="w-full h-full object-contain"
+              onError={e => { e.target.onerror = null; e.target.src = fallbackLogo }}
+            />
+          </div>
 
           {/* Info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <h3 className="font-semibold text-gray-900 text-base truncate">{full_name}</h3>
-                <a
-                  href={`mailto:${email}`}
-                  className="text-sm text-blue-600 hover:underline truncate block"
-                  onClick={e => e.stopPropagation()}
-                >
-                  {email}
-                </a>
-                {phone && <div className="text-xs text-gray-400 mt-0.5">{phone}</div>}
+                <h3 className="font-semibold text-gray-900 text-base truncate">{company_name}</h3>
+                {headquarters && (
+                  <div className="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
+                    <span>📍</span>{headquarters}
+                  </div>
+                )}
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
                 {avgStars && (
@@ -100,19 +99,19 @@ export default function PartnerCard({ partner, isTop = false }) {
       {/* Footer */}
       <div className="flex items-center justify-between px-5 py-3 border-t border-gray-50 bg-gray-50/50 rounded-b-xl">
         <a
-          href={linkedin_url || 'https://www.linkedin.com'}
+          href={website || '#'}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-blue-600 hover:underline"
           onClick={e => e.stopPropagation()}
         >
-          LinkedIn →
+          Visit website →
         </a>
         <button
           onClick={() => navigate(`/partner/${id}/edit`)}
           className="text-sm font-medium bg-navy text-white px-4 py-1.5 rounded-lg hover:bg-navy-light transition-colors"
         >
-          Edit profile
+          Edit
         </button>
       </div>
     </div>

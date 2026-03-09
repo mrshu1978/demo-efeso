@@ -45,9 +45,9 @@ export default function PartnerProfile() {
 
   if (!partner) { navigate('/home'); return null }
 
-  const { full_name, email, phone, avatar, linkedin_url, sectors, solutions, solution_description } = partner
+  const { company_name, logo, website, headquarters, sectors, solutions, solution_description } = partner
 
-  const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(full_name)}&background=1B2E5E&color=fff&size=150&bold=true`
+  const fallbackLogo = `https://ui-avatars.com/api/?name=${encodeURIComponent(company_name)}&background=1B2E5E&color=fff&size=150&bold=true&format=svg`
 
   const avgStars = comments.length
     ? Math.round(comments.reduce((sum, c) => sum + c.stars, 0) / comments.length * 10) / 10
@@ -82,24 +82,38 @@ export default function PartnerProfile() {
           ← Back to results
         </button>
 
-        {/* Partner card */}
+        {/* Company card */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
           <div className="bg-navy px-6 py-5 flex items-center gap-4">
-            <img
-              src={avatar}
-              alt={full_name}
-              className="w-16 h-16 rounded-full border-2 border-white/30 object-cover flex-shrink-0"
-              onError={e => { e.target.onerror = null; e.target.src = fallbackAvatar }}
-            />
-            <div className="text-white min-w-0">
-              <h1 className="text-xl font-bold">{full_name}</h1>
-              <a href={`mailto:${email}`} className="text-sm text-blue-200 hover:underline">{email}</a>
-              {phone && <div className="text-xs text-white/60 mt-0.5">{phone}</div>}
+            {/* Logo on dark background */}
+            <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center flex-shrink-0 p-1.5 shadow">
+              <img
+                src={logo}
+                alt={company_name}
+                className="w-full h-full object-contain"
+                onError={e => { e.target.onerror = null; e.target.src = fallbackLogo }}
+              />
+            </div>
+            <div className="text-white min-w-0 flex-1">
+              <h1 className="text-xl font-bold">{company_name}</h1>
+              {headquarters && (
+                <div className="text-sm text-white/60 mt-0.5">📍 {headquarters}</div>
+              )}
+              {website && (
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-200 hover:underline mt-0.5 block"
+                >
+                  {website.replace('https://', '')}
+                </a>
+              )}
             </div>
             {avgStars && (
               <div className="ml-auto text-center flex-shrink-0">
                 <div className="text-2xl font-bold text-amber-400">{avgStars}</div>
-                <div className="text-[10px] text-white/50">{comments.length} rev.</div>
+                <div className="text-[10px] text-white/50">{comments.length} reviews</div>
               </div>
             )}
           </div>
@@ -131,28 +145,28 @@ export default function PartnerProfile() {
             {/* Links */}
             <div className="flex items-center justify-between pt-2 border-t border-gray-50">
               <a
-                href={linkedin_url || 'https://www.linkedin.com'}
+                href={website || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-blue-600 hover:underline"
               >
-                LinkedIn →
+                Visit website →
               </a>
               <button
                 onClick={() => navigate(`/partner/${id}/edit`)}
                 className="text-xs text-gray-400 hover:text-navy transition-colors"
               >
-                Edit profile →
+                Edit →
               </button>
             </div>
           </div>
         </div>
 
-        {/* Comments */}
+        {/* Reviews */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-50">
             <h2 className="font-semibold text-gray-800">
-              Colleague reviews
+              EFESO team reviews
               {comments.length > 0 && <span className="ml-2 text-sm font-normal text-gray-400">({comments.length})</span>}
             </h2>
           </div>
@@ -164,7 +178,7 @@ export default function PartnerProfile() {
             <textarea
               value={newText}
               onChange={e => setNewText(e.target.value)}
-              placeholder="Describe your collaboration experience..."
+              placeholder="Share your experience working with this technology partner on client projects..."
               rows={3}
               className="w-full mt-3 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy resize-none"
             />
@@ -184,7 +198,7 @@ export default function PartnerProfile() {
             <div className="px-6 py-10 text-center text-gray-300">
               <div className="text-3xl mb-2">💬</div>
               <p className="text-sm text-gray-400">No reviews yet</p>
-              <p className="text-xs text-gray-300 mt-1">Be the first to share your experience</p>
+              <p className="text-xs text-gray-300 mt-1">Be the first to share your experience with this partner</p>
             </div>
           ) : (
             <div className="divide-y divide-gray-50">

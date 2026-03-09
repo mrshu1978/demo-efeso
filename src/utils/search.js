@@ -3,8 +3,9 @@ export function scorePartner(partner, query) {
   if (!words.length) return 0
 
   const haystack = [
-    partner.full_name,
+    partner.company_name,
     partner.solution_description,
+    partner.headquarters,
     ...partner.sectors,
     ...partner.solutions
   ].join(' ').toLowerCase()
